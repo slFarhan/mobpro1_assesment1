@@ -41,21 +41,21 @@ fun ScreenContent(navController: NavController, modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Center, // ✅ Tombol ada di tengah
-        horizontalAlignment = Alignment.CenterHorizontally // ✅ Tombol sejajar di tengah
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
             onClick = { navController.navigate(Screen.WeightConverter.route) },
-            modifier = Modifier.fillMaxWidth(0.8f) // ✅ Lebar tombol 80% dari layar
+            modifier = Modifier.fillMaxWidth(0.8f)
         ) {
             Text("Konversi Berat")
         }
 
-        Spacer(modifier = Modifier.height(16.dp)) // ✅ Jarak antar tombol
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = { navController.navigate(Screen.LengthConverter.route) },
-            modifier = Modifier.fillMaxWidth(0.8f) // ✅ Lebar tombol 80% dari layar
+            modifier = Modifier.fillMaxWidth(0.8f)
         ) {
             Text("Konversi Panjang")
         }
