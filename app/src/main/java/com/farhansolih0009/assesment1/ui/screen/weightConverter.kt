@@ -1,5 +1,7 @@
 package com.farhansolih0009.assesment1.ui.screen
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -23,6 +26,7 @@ import com.farhansolih0009.assesment1.navigation.Screen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WeightConverterScreen(navController: NavController) {
+    val context = LocalContext.current
     val weightUnits = listOf("Gram", "Kilogram", "Miligram")
     var inputValue by remember { mutableStateOf("") }
     var fromUnit by remember { mutableStateOf(weightUnits[0]) }
@@ -55,7 +59,7 @@ fun WeightConverterScreen(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            DropdownUnit(weightUnits, fromUnit, stringResource(R.string.from_unit)) { fromUnit = it }
+            DropdownWeight(weightUnits, fromUnit, stringResource(R.string.from_unit)) { fromUnit = it }
 
             OutlinedTextField(
                 value = inputValue,
@@ -69,7 +73,7 @@ fun WeightConverterScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth()
             )
 
-            DropdownUnit(weightUnits, toUnit, stringResource(R.string.to_unit)) { toUnit = it }
+            DropdownWeight(weightUnits, toUnit, stringResource(R.string.to_unit)) { toUnit = it }
 
             Button(onClick = {
                 inputError = inputValue.isBlank()
@@ -88,6 +92,24 @@ fun WeightConverterScreen(navController: NavController) {
                     label = { Text(stringResource(R.string.result_label)) },
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                Button(
+                    onClick = {
+                        shareData(
+                            context = context,
+                            message = context.getString(
+                                R.string.share_weight_template,
+                                inputValue,
+                                fromUnit,
+                                result,
+                                toUnit
+                            )
+                        )
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.share_button))
+                }
             }
         }
     }
@@ -108,24 +130,35 @@ fun convertWeight(value: Double, from: String, to: String): Double {
     }
 }
 
+private fun shareData(context: Context, message: String) {
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if (shareIntent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(shareIntent)
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DropdownUnit(units: List<String>, selectedUnit: String, labelText: String, onUnitSelected: (String) -> Unit) {
+fun DropdownWeight(
+    items: List<String>,
+    selectedItem: String,
+    label: String,
+    onItemSelected: (String) -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
 
     ExposedDropdownMenuBox(
         expanded = expanded,
-        onExpandedChange = { expanded = !expanded },
-        modifier = Modifier.fillMaxWidth()
+        onExpandedChange = { expanded = !expanded }
     ) {
         OutlinedTextField(
-            value = selectedUnit,
+            value = selectedItem,
             onValueChange = {},
+            label = { Text(label) },
             readOnly = true,
-            label = { Text(labelText) },
-            trailingIcon = {
-                ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-            },
             modifier = Modifier
                 .menuAnchor()
                 .fillMaxWidth()
@@ -134,11 +167,11 @@ fun DropdownUnit(units: List<String>, selectedUnit: String, labelText: String, o
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            units.forEach { unit ->
+            items.forEach { item ->
                 DropdownMenuItem(
-                    text = { Text(unit) },
+                    text = { Text(item) },
                     onClick = {
-                        onUnitSelected(unit)
+                        onItemSelected(item)
                         expanded = false
                     }
                 )

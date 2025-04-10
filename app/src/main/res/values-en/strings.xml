@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Assesment 1</string>
+    <string name="button_length">Length Converter</string>
+    <string name="enter_value">Enter Value</string>
+    <string name="from_unit">From :</string>
+    <string name="to_unit">To :</string>
+    <string name="result_label">>Conversion Result</string>
+    <string name="result_format">Result: %.2f %s</string>
+    <string name="caonvert">Convert</string>
+    <string name="invalid_input_warning">Please enter a valid input</string>
+    <string name="length_converter">Length Converter</string>
+    <string name="unit_meter">Meter</string>
+    <string name="unit_kilometer">Kilometer</string>
+    <string name="unit_centimeter">Centimeter</string>
+    <string name="weight_converter">Weight Converter</string>
+    <string name="unit_gram">Gram</string>
+    <string name="unit_kilogram">Kilogram</string>
+    <string name="unit_milligram">Miligram</string>
+    <string name="about_title">About This App</string>
+    <string name="about_app_name">Assessment 1 - Length and Weight Conversion</string>
+    <string name="about_author">Created by Farhan Solih</string>
+    <string name="about_purpose">For Mobile Programming Course Assignment</string>
+    <string name="about_year">© 2025</string>
+    <string name="id">en</string>
+    <string name="logo_desc">App Logo</string>
+    <string name="button_weight">Weight Converter</string>
+    <string name="share_button">Share</string>
+    <string name="share_weight_template">I converted %1$s %2$s to %3$s %4$s using the Simpleman app!</string>
+    <string name="share_length_template">I converted %1$s %2$s to %3$s %4$s using the Length Converter app!</string>
+</resources>

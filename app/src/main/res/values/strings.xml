@@ -33,4 +33,10 @@
     <string name="about_author">Dibuat oleh Farhan Solih</string>
     <string name="about_purpose">Untuk Tugas Mata Kuliah Mobile Programming</string>
     <string name="about_year">© 2025</string>
+    <string name="id">id</string>
+
+    <string name="share_button">Bagikan</string>
+    <string name="share_weight_template">Saya mengonversi %1$s %2$s menjadi %3$s %4$s menggunakan aplikasi Simpleman!</string>
+    <string name="share_length_template">Saya mengonversi %1$s %2$s menjadi %3$s %4$s menggunakan aplikasi Konversi Panjang!</string>
+
 </resources>
