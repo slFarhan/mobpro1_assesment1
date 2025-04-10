@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">assesment1</string>
+    <string name="app_name">Assesment 1</string>
+
+    <string name="logo_desc">Logo Aplikasi</string>
+    <string name="button_weight">Konversi Berat</string>
+    <string name="button_length">Konversi Panjang</string>
+
+
+    <!-- Umum -->
+    <string name="enter_value">Masukkan angka</string>
+    <string name="from_unit">Dari:</string>
+    <string name="to_unit">Ke:</string>
+    <string name="result_label">Hasil Konversi</string>
+    <string name="result_format">Hasil: %.2f %s</string>
+    <string name="caonvert">Konversi</string>
+    <string name="invalid_input_warning">Input tidak valid! Masukkan angka yang benar.</string>
+
+    <!-- Panjang -->
+    <string name="length_converter">Konversi Panjang</string>
+    <string name="unit_meter">Meter</string>
+    <string name="unit_kilometer">Kilometer</string>
+    <string name="unit_centimeter">Centimeter</string>
+
+    <!-- Berat -->
+    <string name="weight_converter">Konversi Berat</string>
+    <string name="unit_gram">Gram</string>
+    <string name="unit_kilogram">Kilogram</string>
+    <string name="unit_milligram">Miligram</string>
+
+    <!-- About -->
+    <string name="about_title">Tentang Aplikasi</string>
+    <string name="about_app_name">Assesment 1 Konversi Panjang dan Berat</string>
+    <string name="about_author">Dibuat oleh Farhan Solih</string>
+    <string name="about_purpose">Untuk Tugas Mata Kuliah Mobile Programming</string>
+    <string name="about_year">© 2025</string>
 </resources>
